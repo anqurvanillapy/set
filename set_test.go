@@ -45,15 +45,18 @@ func BenchmarkStructMap(b *testing.B) {
 }
 
 func TestUSetAdd(t *testing.T) {
-	s := New()
+	s := NewUSet()
 	s.Add(42)
 	if _, ok := s[42]; !ok {
 		t.Error("USet Add error")
 	}
+	if exists := s.Add(42); !exists {
+		t.Error("USet Add exists error")
+	}
 }
 
 func TestUSetHas(t *testing.T) {
-	s := New()
+	s := NewUSet()
 	s.Add(42)
 	if !s.Has(42) {
 		t.Error("USet Has error")
@@ -61,7 +64,7 @@ func TestUSetHas(t *testing.T) {
 }
 
 func TestUSetDelete(t *testing.T) {
-	s := New()
+	s := NewUSet()
 	s.Add(42)
 	s.Delete(42)
 	if s.Has(42) {

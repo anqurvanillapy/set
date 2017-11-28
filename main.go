@@ -3,8 +3,8 @@ package set
 // USet is an unordered set based on the official map implementation.
 type USet map[interface{}]bool
 
-// New a preallocated set.
-func New() USet {
+// NewUSet creats a preallocated unordered set.
+func NewUSet() USet {
 	return make(USet)
 }
 
